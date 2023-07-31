@@ -7,6 +7,26 @@
 *.o
 *.obj
 
+# Ignore build directories
+build/
+bin/
+
+# Ignore dependency directories
+dependencies/
+libs/
+
+# Ignore generated files
+*.log
+*.cache
+*.bak
+
+# Ignore operating system files
+.DS_Store
+Thumbs.db
+
+# debugg
+debugg/
+
 # Precompiled Headers
 *.gch
 *.pch
@@ -20,13 +40,10 @@
 *.mod
 *.smod
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
 # Executables
 *.exe
 *.out
 *.app
+
+# vs
+.vs
