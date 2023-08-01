@@ -26,7 +26,7 @@ private:
 		node* m_next{};
 
 		node() = default;
-		node(T&& d, node* n = nullptr) : m_data(std::move(d)), m_next(nullptr) {}
+		node(T&& d, node* n = nullptr) : m_data(std::move(d)), m_next(n) {}
 		node(const T& d, node* n = nullptr) : m_data(d), m_next(n) {}
 	};
 

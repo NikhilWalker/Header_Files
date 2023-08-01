@@ -57,9 +57,9 @@ linked_list<T>& linked_list<T>::operator=(const linked_list& l)
     auto itr = l.cbegin();
     if (l.sz == 0)
         return *this;
-    insert_at_head(*itr);
+    push_front(*itr);
     itr++;
-    insert(*this->begin(), itr, l.cend());
+    insert(this->begin(), itr, l.cend());
     return *this;
 }
 template <typename T>
@@ -70,6 +70,7 @@ linked_list<T>& linked_list<T>::operator=(linked_list&& l) noexcept
     sz = l.sz;
     l.m_head = nullptr;
     sz = 0;
+    return *this;
 }
 
 // insert
@@ -117,7 +118,7 @@ void linked_list<T>::swap(linked_list& l) noexcept
     l.m_head = m_head;
     m_head = temp;
     // swap size
-    int t = l.sz;
+    size_t t = l.sz;
     l.sz = sz;
     sz = t;
 }
@@ -126,12 +127,12 @@ void linked_list<T>::swap(linked_list& l) noexcept
 template <typename T>
 void linked_list<T>::erase(iterator position, iterator last)
 {
-    node* temp = position.m_node, * prev = nullptr;
-    if (temp == prev)
+    node* temp = position.m_node, * m_prev = nullptr;
+    if (temp == m_prev)
         return;
     while (temp != position.m_node && temp != nullptr)
     {
-        prev = temp;
+        m_prev = temp;
         temp = temp->m_next;
     }
     if (temp == nullptr)
@@ -139,10 +140,10 @@ void linked_list<T>::erase(iterator position, iterator last)
 
     while (temp != last.m_node)
     {
-        if (prev == nullptr)
+        if (m_prev == nullptr)
             m_head = m_head->m_next;
         else
-            prev->m_next = temp->m_next;
+            m_prev->m_next = temp->m_next;
         position++;
         delete temp;
         temp = position.m_node;
@@ -183,14 +184,14 @@ void linked_list<T>::clear() noexcept
 {
     if (m_head == nullptr)
         return;
-    iterator temp = this->begin(), prev = temp;
+    iterator temp = this->begin(), m_prev = temp;
     m_head = nullptr;
     sz = 0;
-    while (prev != this->end())
+    while (m_prev != this->end())
     {
         temp++;
-        delete prev.m_node;
-        prev = temp;
+        delete m_prev.m_node;
+        m_prev = temp;
     }
 }
 
