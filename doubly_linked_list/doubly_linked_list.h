@@ -72,7 +72,7 @@ public:
 
     template <typename itr>
     doubly_linked_list(itr first, itr last);
-    doubly_linked_list(const std::initializer_list<T>& il) : doubly_linked_list(il.begin(), il.end()) {} // intialise the linked list from intitalizer list
+    doubly_linked_list(std::initializer_list<T>& il);
 
     // = operator
     void operator=(const doubly_linked_list& l);

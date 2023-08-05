@@ -54,7 +54,7 @@ public:
 	linked_list(linked_list&& l);
 	template <typename itr>
 	linked_list(itr first, itr last);
-	linked_list(const std::initializer_list<T>& list) : linked_list(list.begin(), list.end()) {}
+	linked_list(std::initializer_list<T>& list);
 
 	// assignment operator
 	linked_list& operator=(const linked_list& l);

@@ -4,6 +4,13 @@
 
 // constructors
 template <typename T>
+doubly_linked_list<T>::doubly_linked_list(std::initializer_list<T>& il)
+{
+    for (auto it : il)
+        push_back(std::move(it));
+}
+
+template <typename T>
 doubly_linked_list<T>::doubly_linked_list(doubly_linked_list&& l) noexcept
 {
     m_head = l.m_head;

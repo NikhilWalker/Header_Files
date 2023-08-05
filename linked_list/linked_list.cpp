@@ -4,6 +4,13 @@
 
 // constructors
 template <typename T>
+linked_list<T>::linked_list(std::initializer_list<T>& il)
+{
+    for (auto it : il)
+        push_front(std::move(it));
+}
+
+template <typename T>
 linked_list<T>::linked_list(const T& d)
 {
     m_head = new node(d);
