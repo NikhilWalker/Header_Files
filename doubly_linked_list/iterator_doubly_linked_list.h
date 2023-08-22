@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ITERATOR_DOUBLY_LINKED_LIST_H__
+#define ITERATOR_DOUBLY_LINKED_LIST_H__ 1
 
 // class iterator is used for traversing the list
 
@@ -139,3 +140,5 @@ public:
         return &(m_node->m_data);
     }
 };
+
+#endif //ITERATOR_DOUBLY_LINKED_LIST_H__

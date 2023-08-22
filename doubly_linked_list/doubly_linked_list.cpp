@@ -4,7 +4,7 @@
 
 // constructors
 template <typename T>
-doubly_linked_list<T>::doubly_linked_list(std::initializer_list<T>& il)
+doubly_linked_list<T>::doubly_linked_list(std::initializer_list<T> il)
 {
     for (auto it : il)
         push_back(std::move(it));
@@ -142,7 +142,7 @@ bool doubly_linked_list<T>::operator==(const doubly_linked_list& l) const
         return false;
     for (auto itr1 = cbegin(), itr2 = l.cbegin(); itr1 != cend(); itr1++, itr2++)
     {
-        if (*itr1 != *itr2)
+        if (!(*itr1 == *itr2))
             return false;
     }
     return true;

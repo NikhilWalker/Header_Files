@@ -3,27 +3,22 @@
 #include "linked_list.h"
 
 // constructors
+
 template <typename T>
-linked_list<T>::linked_list(std::initializer_list<T>& il)
+linked_list<T>::linked_list(std::initializer_list<T> il) //initializer list
 {
     for (auto it : il)
         push_front(std::move(it));
 }
 
 template <typename T>
-linked_list<T>::linked_list(const T& d)
-{
-    m_head = new node(d);
-    sz = 1;
-}
-template <typename T>
-linked_list<T>::linked_list(T&& d)
+linked_list<T>::linked_list(T&& d) //move single element
 {
     m_head = new node(std::move(d));
     sz = 1;
 }
 template <typename T>
-linked_list<T>::linked_list(linked_list&& l)
+linked_list<T>::linked_list(linked_list&& l) //move constructor
 {
     m_head = l.m_head;
     sz = l.sz;
@@ -31,13 +26,12 @@ linked_list<T>::linked_list(linked_list&& l)
     sz = 0;
 }
 template <typename T>
-linked_list<T>::linked_list(int size, const T& init)
+linked_list<T>::linked_list(const T& init, int size) //initialise
 {
     if (size < 1)
         throw std::invalid_argument("Initializing linked list with " + std::to_string(size) + " nodes.");
-    sz = size;
     while (size--)
-        insert_at_head(init);
+        push_front(init);
 }
 template <typename T>
 template <typename itr>
@@ -85,7 +79,7 @@ template <typename T>
 template <typename itr>
 void linked_list<T>::insert(iterator position, itr source_start, itr source_end)
 {
-    if (source_start == source_end || position == iterator(nullptr))
+    if (position == iterator(nullptr))
         return;
     while (source_start != source_end)
     {
@@ -179,7 +173,7 @@ bool linked_list<T>::operator==(const linked_list& l) const
         return false;
     for (auto itr1 = cbegin(), itr2 = l.cbegin(); itr1 != cend(); itr1++, itr2++)
     {
-        if (*itr1 != *itr2)
+        if (!(*itr1==*itr2))
             return false;
     }
     return true;

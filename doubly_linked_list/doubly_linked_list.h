@@ -1,10 +1,11 @@
-#pragma once
+#ifndef DOUBLY_LINKED_LIST_H__
+#define DOUBLY_LINKED_LIST_H__ 1
 
 // doubly linked list (dll) is a linear data structure used to store data in memory efficient way
 //  for example the int data is stores in this library as
 /*
 data is 1 2 3 4 5
-dll is
+doubly linked list is
     nullptr <- 1 <-> 2 <-> 3 <-> 4 <-> 5 -> nullptr
 */
 
@@ -15,6 +16,7 @@ dll is
 
 
 // these are Doxygen comments used for documentation of class, function or anything in language
+
 /// @brief stores homogeneous data in a doubly_linked_list
 /// @tparam T data type need to be stored
 template <typename T>
@@ -72,7 +74,7 @@ public:
 
     template <typename itr>
     doubly_linked_list(itr first, itr last);
-    doubly_linked_list(std::initializer_list<T>& il);
+    doubly_linked_list(std::initializer_list<T> il);
 
     // = operator
     void operator=(const doubly_linked_list& l);
@@ -180,11 +182,11 @@ public:
     iterator find(const T& value, const_iterator start, const_iterator end = const_iterator(nullptr)) const;
 
     // size
-    constexpr size_t size() const noexcept { return sz; }     // return size of dll
-    constexpr bool empty() const noexcept { return sz == 0; } // return if the object is empty or not
+     size_t size() const noexcept { return sz; }     // return size of dll
+    [[nodiscard]] bool empty() const noexcept { return sz == 0; } // return true if the object is empty else false
 
     void clear() noexcept;
     ~doubly_linked_list() { clear(); }
 };
 
-
+#endif //DOUBLY_LINKED_LIST_H__

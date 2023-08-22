@@ -1,9 +1,16 @@
-#pragma once
+#ifndef ITERATOR_LINKED_LIST_H__
+#define ITERATOR_LINKED_LIST_H__ 1
 
 #include <iterator> // for iterator tag
 template <typename T>
 class linked_list;
 
+/// <summary>
+/// constant base class for linked list class
+/// forward iterator
+/// </summary>
+/// <typeparam name="node">node container</typeparam>
+/// <typeparam name="T">data type</typeparam>
 template <typename node, typename T>
 class const_base_iterator
 {
@@ -11,6 +18,7 @@ protected:
 	node* m_node{};
 	friend linked_list<T>;
 public:
+	// forward iterator tag
 	using iterator_category = std::forward_iterator_tag;
 
 	// constructors
@@ -40,6 +48,11 @@ public:
 	const T* operator->() const { return &(m_node->m_data); }
 };
 
+/// <summary>
+/// base class for linked list
+/// </summary>
+/// <typeparam name="node">node container</typeparam>
+/// <typeparam name="T">data type</typeparam>
 template <typename node, typename T>
 class base_iterator : public const_base_iterator<node,T>
 {
@@ -48,6 +61,7 @@ protected:
 	using const_base_iterator<node, T>::m_node;
 	friend linked_list<T>;
 public:
+	// forward iterator tag
 	using iterator_category = std::forward_iterator_tag;
 
 	// constructors
@@ -55,6 +69,9 @@ public:
 	base_iterator(const base_iterator& other) { m_node = other.m_node; }
 	explicit base_iterator(node* n) { m_node = n; }
 
+	// dereferencing
 	T& operator*() { return m_node->m_data; }
 	T* operator->() { return &(m_node->m_data); }
 };
+
+#endif // ITERATOR_LINKED_LIST_H__
