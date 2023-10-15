@@ -1,13 +1,14 @@
-#pragma once
+#ifndef BST_H__
+#define BST_H__ 1
 
 // BST (binary search tree)
 /*
 for example a BST tree with data 2,1,3
-    2 -> root node
+    2       -> root node
    / \
   /   \
  /     \
-1       3 -> child nodes
+1       3   -> child nodes
 
 */
 
@@ -67,7 +68,6 @@ public:
     BST(itr start, itr end);
     BST(std::initializer_list<T> il);
 
-
     // size and height
     constexpr size_t size(iterator root) const noexcept
     {
@@ -118,3 +118,5 @@ public:
         delete m_root;
     }
 };
+
+#endif //BST_H__

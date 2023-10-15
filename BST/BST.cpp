@@ -2,6 +2,7 @@
 
 #include <queue>
 #include "BST.h"
+#include <iostream>
 
 //constructors
 
@@ -40,17 +41,20 @@ void BST<T>::insert(const T& d)
 	{
 		temp->m_right = new node(d, temp->m_left, temp->m_right);
 		temp->m_left = nullptr;
+		return;
 	}
-
 	//check if the node is smaller than data than insert the data on right else left
 	if (d > temp->m_data && temp->m_right == nullptr)
+	{
 		temp->m_right = new node(d);
+	}
 	else if (temp->m_left == nullptr)
+	{
 		temp->m_left = new node(d);
-
+	}
 	//if both the node is not empty than there is error in logic must be solved
 	else
-		throw std::logic_error("Inserting at non-empty place");
+		throw std::logic_error("Inserting at non-empty place logic error in insert function");
 }
 
 template<typename T>
@@ -77,11 +81,25 @@ typename BST<T>::const_iterator BST<T>::find_min(const_iterator root) const noex
 	}
 	return root;
 }
+
+/// <summary>
+/// find parent node of the given node
+/// </summary>
+/// <typeparam name="T">data type</typeparam>
+/// <param name="root">node whose parent node we want to find</param>
+/// <returns>iterator to the parent node</returns>
 template<typename T>
 typename BST<T>::iterator BST<T>::find_parent(iterator root)
 {
 	return iterator(find_parent(const_iterator(root.m_node)).m_node);
 }
+
+/// <summary>
+/// find parent node of the given node
+/// </summary>
+/// <typeparam name="T">data type</typeparam>
+/// <param name="root">node whose parent node we want to find</param>
+/// <returns>const_iterator to the parent node</returns>
 template<typename T>
 typename BST<T>::const_iterator BST<T>::find_parent(const_iterator root) const
 {
@@ -101,14 +119,23 @@ typename BST<T>::const_iterator BST<T>::find_parent(const_iterator root) const
 			temp.m_node = temp.m_node->m_right;
 		// if leaf node
 		else
-			throw std::logic_error("node is in another tree");
+			throw std::logic_error("node does not found in current tree");
 		//compare
 		if (temp == root)
 			return parent;
 	}
 }
-//return iterator to the node if found or return the last node
-// throws exception if the given node is nullptr
+
+
+
+/// <summary>
+/// find a data in binary search tree
+/// throws exception if the given node is nullptr
+/// </summary>
+/// <typeparam name="T">data type</typeparam>
+/// <param name="d">data to find</param>
+/// <param name="root">node from where finding algorithm starts</param>
+/// <returns>return iterator to the node if found or return the last node</returns>
 template <typename T>
 typename BST<T>::const_iterator BST<T>::find(const T& d, const_iterator root) const
 {
@@ -143,13 +170,12 @@ void BST<T>::insert(T&& d) noexcept
 	{
 		temp->m_right = new node(std::move(d), temp->m_left, temp->m_right);
 		temp->m_left = nullptr;
+		return;
 	}
 	if (d > temp->m_data && temp->m_right == nullptr)
 		temp->m_right = new node(std::move(d));
 	else if (temp->m_left == nullptr)
 		temp->m_left = new node(std::move(d));
-	else
-		throw std::logic_error("Inserting at non-empty place");
 }
 
 // Function to delete a node with the given data from the BST
@@ -157,12 +183,13 @@ template<typename T>
 typename BST<T>::iterator BST<T>::delete_node(const T& key)
 {
 	iterator itr = find(key, this->root());
-	if (itr.m_node == nullptr || itr.m_node->m_data != key)
+	if (itr.m_node == nullptr || *itr != key)
 		return itr;
 	else
 		return delete_node(itr);
 }
 
+//delete given node from the binary search tree
 template<typename T>
 typename BST<T>::iterator BST<T>::delete_node(iterator root)
 {
@@ -184,7 +211,7 @@ typename BST<T>::iterator BST<T>::delete_node(iterator root)
 		delete root.m_node;
 		return iterator(*ptr);
 	}
-	else	if (root.m_node->m_right == nullptr)
+	else if (root.m_node->m_right == nullptr)
 	{
 		iterator parent = find_parent(root);
 		node** ptr;
@@ -239,7 +266,7 @@ template <typename T>
 void BST<T>::levelorder_(std::vector<const T*>& res) const noexcept
 {
 	std::queue<const_iterator> q;
-	if (root.m_node == nullptr)
+	if (m_root == nullptr)
 		return;
 
 	q.push(root());

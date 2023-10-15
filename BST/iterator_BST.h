@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ITERATOR_BST_H__
+#define ITERATOR_BST_H__ 1
 // base Iterators for binary search tree
 
 template <typename T>
@@ -47,4 +48,4 @@ public:
     T& operator*() { return m_node->m_data; }
     T* operator->() { return &m_node->m_data; }
 };
-
+#endif //ITERATOR_BST_H__
