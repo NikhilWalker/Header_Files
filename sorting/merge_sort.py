@@ -1,4 +1,4 @@
-def merge_sort(arr:list):
+def merge_sort(arr: list):
     if len(arr) > 1:
         # Divide the list into two halves
         mid = len(arr) // 2
@@ -12,6 +12,7 @@ def merge_sort(arr:list):
         # Merge the two sorted halves
         i = j = k = 0  # Indices for left_half, right_half, and arr
         while i < len(left_half) and j < len(right_half):
+            # Compare the elements from left_half and right_half
             if left_half[i] < right_half[j]:
                 arr[k] = left_half[i]
                 i += 1

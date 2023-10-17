@@ -8,11 +8,24 @@ All the header files contains Documentation for beginners and intermediates.
 ## Contents
 
 - [Data Structures](#data-structures)
+- [Algorithm](#algorithm)
 
 ## Data Structures
 
 - Linked list: Header file for a linked list implementation.
 - Doubly Linked list: Header file for a doubly linked list implementation.
+- Binary Search Tree (BST)
+- Max Heap
+
+## Algorithm
+
+- Bubble Sort
+- Selection Sort
+- Insertion Sort
+- Merge Sort
+- Quick Sort
+- Randomized Quick Sort
+- Heap Sort
 
 ## Contributing
 see about [contribution](./contribution)
