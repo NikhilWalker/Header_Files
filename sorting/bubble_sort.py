@@ -1,3 +1,7 @@
+# swapping consecutive elements if they are not in order
+# repeat the procedure n times
+# worst time complexity n*2
+
 def bubble_sort(arr:list):
     n = len(arr)
     

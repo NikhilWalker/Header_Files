@@ -1,3 +1,10 @@
+# select last element of array pivot element and partition the array
+# such that the elements smaller than pivot elements are on left and larger or equal are on right
+# swap the pivot to the first element of right parititon
+# recursively call sort for left and right array
+# worst case n*2
+# average case n*lg(n)
+
 def quick_sort(arr: list) -> None:
     # The main quick_sort function
     def partition(arr: list, low, high):

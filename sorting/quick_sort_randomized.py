@@ -1,3 +1,9 @@
+# a modification of quick sort
+# in worst case i.e., sorted array and reverse sorted the partition happens
+# at the start or end of the array
+# so we swap the random element with pivot and do the partition
+# expected time complexity n*lg(n)
+
 import random
 
 def quick_sort_r(arr: list) -> None:

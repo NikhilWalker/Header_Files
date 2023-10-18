@@ -1,3 +1,8 @@
+# heap sort depends on heap data structure
+# in heap the maximum element is at top of the tree
+# extract the max element and again heapify the tree
+# worst time complexity n*lg(n)
+
 def max_heapify(arr, parent, size):
     # Calculate the indices of the left and right child nodes
     left = parent * 2 + 1

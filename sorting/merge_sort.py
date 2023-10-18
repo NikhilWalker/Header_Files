@@ -1,3 +1,8 @@
+# divide the array in two part recursively sort the left and right array
+# till the element in array becomes 1
+# merge the left and right array
+# worst time complexity n*lg(n)
+
 def merge_sort(arr: list):
     if len(arr) > 1:
         # Divide the list into two halves

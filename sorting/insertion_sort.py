@@ -1,3 +1,7 @@
+# insert a element into sorted array by shifting bigger elements to the 
+# right until a smaller element found
+# worst time complexity n*2
+
 def insertion_sort(arr):
     for i in range(1, len(arr)):
         key = arr[i]  # Current element to be inserted

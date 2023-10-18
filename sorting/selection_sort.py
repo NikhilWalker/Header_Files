@@ -1,3 +1,7 @@
+# select the smallest element in the array and swap with the first element of
+# non-sorted array
+# time complexity n*2
+
 def selection_sort(arr : list):
     n = len(arr)
 
