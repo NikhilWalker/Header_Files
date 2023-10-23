@@ -19,13 +19,17 @@ All the header files contains Documentation for beginners and intermediates.
 
 ## Algorithm
 
-- Bubble Sort
-- Selection Sort
-- Insertion Sort
-- Merge Sort
-- Quick Sort
-- Randomized Quick Sort
-- Heap Sort
+- [Bubble Sort](./sorting/bubble_sort.py)
+- [Selection Sort](./sorting/selection_sort.py)
+- [Insertion Sort](./sorting/insertion_sort.py)
+- [Shell Sort](./sorting/shell_sort.py)
+- [Merge Sort](./sorting/merge_sort.py)
+- [Quick Sort](./sorting/quick_sort.py)
+- [Randomized Quick Sort](./sorting/quick_sort_randomized.py)
+- [Heap Sort](./sorting/heap_sort.py)
+- [Counting Sort](./sorting/counting_sort.py)
+- [Radix Sort](./sorting/radix_sort.py)
+- [Bucket Sort](./sorting/bucket_sort.py)
 
 ## Contributing
 see about [contribution](./contribution)
