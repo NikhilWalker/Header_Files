@@ -38,6 +38,9 @@ debugg.*
 *.out
 *.app
 
+# python cache
+__pycache__/
+
 # vs
 .vs
 main*
