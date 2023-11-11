@@ -33,4 +33,3 @@ def quick_sort(arr: list) -> None:
 
     sort(arr, 0, len(arr) - 1)  # Initial call to the sorting function with the entire array
 
-# The main quick_sort function is called with the input list and sorts it in ascending order.

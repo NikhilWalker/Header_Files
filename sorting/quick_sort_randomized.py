@@ -10,7 +10,7 @@ def quick_sort_r(arr: list) -> None:
     def partition(arr: list, low, high):
         # Swap a random element with the pivot element for improved performance
         random_index = random.randint(low, high)
-        arr[low], arr[random_index] = arr[random_index], arr[low]
+        arr[high], arr[random_index] = arr[random_index], arr[high]
 
         pivot = arr[high]  # The pivot element is chosen as the last element in the subarray
         prev = low - 1  # Initialize the previous element's index
